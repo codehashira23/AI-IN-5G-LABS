@@ -1,0 +1,34 @@
+# Official Ella Networks simulation topology (Ubuntu + Docker).
+# Source: https://docs.ellanetworks.com/tutorials/getting_started_simulation/
+services:
+  ella-core:
+    image: ghcr.io/ellanetworks/ella-core:v1.9.1
+    restart: unless-stopped
+    entrypoint: ["/bin/core", "--config", "/core.yaml"]
+    privileged: true
+    ports:
+      - "5002:5002"
+    networks:
+      default:
+        driver_opts:
+          com.docker.network.endpoint.ifname: eth0
+      n3:
+        driver_opts:
+          com.docker.network.endpoint.ifname: n3
+        ipv4_address: 10.3.0.2
+  ueransim:
+    image: ghcr.io/ellanetworks/ueransim:3.2.7
+    restart: unless-stopped
+    privileged: true
+    networks:
+      n3:
+        driver_opts:
+          com.docker.network.endpoint.ifname: n3
+        ipv4_address: 10.3.0.3
+
+networks:
+  n3:
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.3.0.0/24

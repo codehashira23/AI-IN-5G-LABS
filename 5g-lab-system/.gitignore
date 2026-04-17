@@ -1,0 +1,14 @@
+logs/*.log
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/target/
+**/.idea/
+**/.classpath
+**/.project
+**/.settings/
+*.iml
+.DS_Store
+lab5-ellacore-ueransim/ueransim-native/UERANSIM/
+lab5-ellacore-ueransim/ueransim-native/install/
+lab3-5g-core/free5gc/free5gc-compose/

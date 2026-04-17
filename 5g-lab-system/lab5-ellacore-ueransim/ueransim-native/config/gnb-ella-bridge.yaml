@@ -1,0 +1,24 @@
+# Example gNB config when running UERANSIM **natively on the host** while Ella Core
+# runs in Docker with AMF on 10.3.0.2 (N2). Adjust host networking if you use a VM.
+mcc: '001'
+mnc: '01'
+nci: '0x0000000100'
+idLength: 32
+tac: 1
+linkIp: 127.0.0.1
+ngapIp: 127.0.0.1
+gtpIp: 127.0.0.1
+# Route SCTP to published AMF inside docker network — simplest path is run gNB in the ueransim container (recommended).
+# For advanced host-only setups, publish 38412 from ella-core or use macvlan; this file is a didactic template.
+amfConfigs:
+  - address: 10.3.0.2
+    port: 38412
+
+slices:
+  - sst: 1
+    sd: 0x010203
+
+imsis:
+  - '001019756139935'
+
+ignoreStreamIds: true

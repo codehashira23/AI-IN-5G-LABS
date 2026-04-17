@@ -1,0 +1,35 @@
+# Example UE config for IMSI / keys matching docs/SUBSCRIBER.md
+supi: 'imsi-001019756139935'
+mcc: '001'
+mnc: '01'
+key: '0eefb0893e6f1c2855a3a244c6db1277'
+op: '98da19bbc55e2a5b53857d10557b1d26'
+amf: '8000'
+opType: 'OP'
+# Start in same Layer-2 / RF sim environment as your gNB (typically the ueransim container).
+gnbSearchList:
+  - 127.0.0.1
+
+uacAic:
+  mps: false
+  mcs: false
+uacAcc:
+  normalService: true
+
+sessions:
+  - type: 'IPv4'
+    apn: 'internet'
+    slice:
+      sst: 1
+      sd: 0x010203
+
+configured-nssai:
+  - sst: 1
+    sd: 0x010203
+
+default-nssai:
+  - sst: 1
+    sd: 0x010203
+
+integrityMaxRate: 'full'
+cipheringMaxRate: 'full'

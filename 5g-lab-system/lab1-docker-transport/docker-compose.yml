@@ -1,0 +1,34 @@
+services:
+  rest:
+    build: ./rest-service
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  mqtt-demo:
+    build: ./mqtt-service
+    depends_on:
+      - mosquitto
+    environment:
+      MQTT_BROKER: mosquitto
+      MQTT_PORT: "1883"
+
+  grpc:
+    build: ./grpc-service
+    ports:
+      - "50051:50051"
+
+networks:
+  default:
+    name: lab1_transport
