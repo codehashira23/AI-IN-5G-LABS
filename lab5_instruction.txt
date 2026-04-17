@@ -1,0 +1,39 @@
+Assignment - Simulate a 5g network using Ella core and UERANSIM
+Om motilal mundada
+•
+Apr 7
+10 points
+Due Apr 12
+Students are required to simulate a 5g network using Ella core and UERANSIM described in the laboratory and submit a single consolidated PDF report.
+
+Model setup:
+1. Install Ella Core and UERANSIM
+2. Initialize Ella Core
+3. Create a Subscriber
+4. Connect the 5G Radio Simulator
+5. Connect the User Equipment Simulator
+6. Validate the Connection
+7. Clean Up 
+
+
+
+Include screenshots of:
+Ella core initialization page
+Ella core dashboard page
+Subscriber page
+Connection with 5g radio simulator
+Connection with user equipment simulator
+Ella core updated subscribers page
+Terminal window screenshot
+
+PDF Format Requirements:
+Combine everything into one single PDF.
+Include screenshots and explanations.
+Clearly structure the report with headings.
+Use proper formatting.
+
+File Naming Format:
+
+YourName_RollNo_Ella_core_Assignment.pdf
+
+Submit only one PDF file.

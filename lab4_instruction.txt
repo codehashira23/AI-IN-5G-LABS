@@ -1,0 +1,51 @@
+Multi-Agent AI-Based QoE Analysis for 5G Networks
+Rishabh Rathod
+•
+Feb 12
+10 points
+Due Feb 15
+Students are required to implement the complete Multi-Agent QoE Analysis System as described in the laboratory manual and submit a single consolidated PDF report.
+
+Submission Requirements:
+
+Model Setup
+Install all required dependencies.
+Install and configure Ollama.
+Pull the model using:
+ollama pull llama3.1:8b
+Include a screenshot showing successful model pull.
+Briefly explain the model used and configuration settings.
+
+System Implementation
+Implement all required agents:
+KPI Sanity Check Agent
+QoE Classification Agent
+Human Review Agent
+Network Advice Agent
+Memory Agent
+Build and compile the LangGraph workflow.
+
+Include screenshots of:
+Workflow diagram
+Model Pulling
+Scenarios Screenshot
+Tasks outputs
+Final output report
+LangSmith trace (if configured)
+
+Experimental Tasks
+Modify few-shot examples and document changes.
+Enhance the advice agent and show code modifications.
+Implement real human review and test it.
+Add one new agent (Trend Analysis or similar) and explain its function.
+
+LangSmith Monitoring (if used)
+Include screenshot of execution trace.
+Mention token usage and agent performance observations.
+
+
+PDF Format Requirements:
+Combine everything into one single PDF.
+Include screenshots and explanations.
+Clearly structure the report with headings.
+Use proper formatting.

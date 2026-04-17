@@ -1,0 +1,67 @@
+Lab 2: 5G Core Networks & API Exposure (Open5GS, free5GC, Spring Boot)
+Rishabh Rathod
+•
+Feb 5 (Edited Feb 5)
+10 points
+Due Feb 8
+OBJECTIVE:To implement and verify 5G Core Network functionality using Open5GS and free5GC, and to design and test REST APIs using Spring Boot with Swagger UI. This lab focuses on hands-on execution and verification of outputs.
+
+
+PART A: OPEN5GS
+Students must:
+• Start Open5GS core network services
+• Verify that core network components are running
+
+SCREENSHOT REQUIREMENT (MINIMUM 2–3):
+1. Open5GS core services running (terminal output)
+2. Startup logs 
+3. Any verification output (service status or logs)
+
+Each screenshot must include a brief explanation:
+• Command executed
+• Output observed
+• Concept demonstrated
+
+
+PART B: FREE5GC
+Students must:
+• Build and run free5GC core network
+• Access and verify the free5GC WebConsole
+• Verify subscriber configuration or core network status
+
+SCREENSHOT REQUIREMENT (MINIMUM 2–3):
+1. free5GC core running using ./run.sh with NF registration logs
+2. free5GC WebConsole UI in browser
+3. Subscriber creation or verification output (UI or terminal)
+
+Each screenshot must include a brief explanation.
+
+PART C: SPRING BOOT WITH SWAGGER UI
+Students must:
+• Run the Spring Boot application
+• Access Swagger UI
+• Test REST APIs using Swagger UI
+
+SCREENSHOT REQUIREMENT (MINIMUM 2–3):
+1. Spring Boot application running (terminal output)
+2. Swagger UI page
+3. Successful API execution (GET / POST response)
+
+Each screenshot must include a brief explanation.
+
+SUBMISSION INSTRUCTIONS:
+• Submit ONE PDF file only
+• Screenshots must be clear and readable
+• Each screenshot must have 2–4 lines of explanation
+• Minimum screenshots required:
+  - Open5GS: 2–3
+  - free5GC: 2–3
+  - Spring Boot + Swagger: 2–3
+
+At least ONE terminal screenshot must include the following commands in the same screenshot as a running service:
+hostname
+date
+
+
+FILE NAMING FORMAT:
+RollNo_Name_Lab2.pdf

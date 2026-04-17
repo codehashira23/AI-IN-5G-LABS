@@ -1,0 +1,28 @@
+Lab 1: Docker & Transport Protocols (REST, gRPC, MQTT)
+Rishabh Rathod
+•
+Jan 28 (Edited Jan 28)
+10 points
+Due Jan 28, 10:00 PM
+Objective: Implement the given lab manual using Docker and demonstrate REST, gRPC, and MQTT communication.
+
+Instructions:
+1. Download and follow the provided lab manual.
+2. Perform the lab on Ubuntu/Linux.
+3. Capture screenshots at each major step:
+   - Docker installation verification
+   - Docker image build
+   - Container execution
+   - REST API testing (curl output)
+   - gRPC client-server output
+   - MQTT publish/subscribe output
+4. Add brief explanations below each screenshot explaining:
+   - What command was executed
+   - What output was obtained
+   - What concept it demonstrates
+5. Compile everything into a SINGLE PDF file.
+
+Submission Rules:
+• Only PDF format is accepted.
+• Screenshots without explanations will NOT be evaluated.
+• Plagiarism or copied screenshots will result in zero marks.
