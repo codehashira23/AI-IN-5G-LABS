@@ -12,6 +12,10 @@
 Closing line (short):
 “Lab 1 successful hai: containers up hain, REST/MQTT/gRPC tino protocols properly validate ho gaye.”
 
+Command:
+
+curl -s http://127.0.0.1:8080/health
+Agar output aaye, then Lab 1 ka REST part healthy hai.
 
 
 “Ab main Lab 2 demonstrate kar raha hoon: Spring Boot + Swagger API validation.”
@@ -27,6 +31,18 @@ Closing line (short):
 Closing line (short):
 “Lab 2 successful hai: Spring app run hua, Swagger load hua, aur API requests expected response de rahi hain.”
 
+Lab 2 me teacher ko ye 5 cheezein show karo:
+
+./run.sh successful run (build + app start).
+Swagger UI open ho raha hai:
+http://127.0.0.1:8081/swagger-ui/index.html
+API docs endpoint ka response:
+http://127.0.0.1:8081/v3/api-docs
+Ek POST request se data create ho raha hai.
+Ek GET request se wahi data fetch ho raha hai.
+
+
+
 
 “Ab main Lab 3 demonstrate kar raha hoon, jisme 5G core workflow verify karte hain.”
 “Is lab me hum Open5GS/Free5GC style core components ko run aur validate karte hain.”
@@ -41,6 +57,28 @@ Closing line (short):
 Closing line (short):
 “Lab 3 successful hai: core services up hain, verification checks pass hain, aur logs expected flow show kar rahe hain.”
 
+Show these points:
+
+./run.sh run karke Lab 3 workflow execute hua.
+Open5GS service active hai (especially AMF).
+Free5GC/Open5GS related verification logs generate hue.
+Agar free5gc path use hua hai, docker compose ps me containers up.
+Final success/log evidence.
+Commands (demo):
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab3-5g-core"
+./run.sh
+Proof commands:
+
+systemctl is-active open5gs-amfd
+systemctl status open5gs-amfd --no-pager | head -15
+(Free5GC side check if needed)
+
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab3-5g-core/free5gc/free5gc-compose"
+docker compose ps
+
+
 
 “Ab main Lab 4 demonstrate kar raha hoon: AI-based QoE analysis using LangGraph + Ollama.”
 “Is lab ka goal hai network KPIs ko input dena aur AI se QoE label + advice generate karna.”
@@ -52,6 +90,23 @@ Closing line (short):
 “Output me key fields aati hain: kpi_ok, qoe_label, aur advice.”
 “Main normal aur stress KPI values run karke behavior difference bhi show kar sakta hoon.”
 “Is tarah Lab 4 prove karta hai ki AI workflow network KPIs ko practical QoE insights me convert kar sakta hai.”
+
+Lab 4 me teacher ko AI workflow ka full proof dikhana hai:
+
+run.sh execute hua (setup + model + workflow).
+Ollama model available (llama3.1:8b).
+QoE workflow KPI input le raha hai.
+Output me fields aa rahi hain: kpi_ok, qoe_label, advice.
+Normal vs stress KPI run ka difference (optional but strong proof).
+Demo commands:
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab4-ai-qoe"
+./run.sh
+Extra proof (optional):
+
+python qoe_workflow.py -82 35 1.2
+python qoe_workflow.py -112 180 6.0
+Kya bolna hai (one-liner): “Lab 4 me maine AI-based QoE pipeline run ki jo KPI inputs ko evaluate karke QoE label aur optimization advice generate karti hai.”
 
 
 “Ab main Lab 5 run kar raha hoon: Ella Core + UERANSIM, jisme hum 5G attach aur session simulation dikhate hain.”
@@ -66,3 +121,16 @@ Closing line (short):
 “So Lab 5 successfully show karta hai ki simulated 5G core + RAN setup me attach aur connectivity dono work kar rahe hain.”
 
 
+Lab 5 me yeh dikhana hai (only proof points):
+
+./run.sh chalake stack up.
+docker compose ps me ella-core aur ueransim Up.
+Browser me UI open: http://127.0.0.1:5002/ (ya https://127.0.0.1:5002/ as per setup).
+gNB terminal run:
+docker compose exec -ti ueransim bin/nr-gnb --config /gnb.yaml
+UE terminal run:
+docker compose exec -ti ueransim bin/nr-ue --config /ue.yaml
+Logs me registration/signaling evidence.
+Ping proof:
+docker compose exec -ti ueransim ping -I uesimtun0 8.8.8.8 -c4
+Bas itna dikh gaya to Lab 5 complete proof ho jata hai.
