@@ -1,13 +1,5 @@
-AI in 5G Labs - Teacher Demo Commands (Run One by One)
 
-Important:
-- Run labs in order: Lab1 -> Lab2 -> Lab3 -> Lab4 -> Lab5
-- Complete one lab, show output, then move to next
-- For Lab 5, use multiple terminals
-
-============================================================
-LAB 1 - Docker Transport (REST + MQTT + gRPC)
-============================================================
+lab 1 
 
 Terminal 1:
 cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab1-docker-transport"
@@ -21,10 +13,7 @@ curl -s http://127.0.0.1:8080/health
 Stop Lab 1 before next lab:
 docker compose down
 
-
-============================================================
-LAB 2 - Spring Boot + Swagger
-============================================================
+lab 2
 
 Terminal 1:
 cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab2-spring-swagger"
@@ -38,10 +27,7 @@ curl -s http://127.0.0.1:8081/v3/api-docs
 Note:
 - If app is still running after demo, stop with Ctrl+C (or kill shown PID)
 
-
-============================================================
-LAB 3 - 5G Core (Open5GS + Free5GC)
-============================================================
+lab 3
 
 Terminal 1:
 cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab3-5g-core"
@@ -52,10 +38,7 @@ Proof commands:
 systemctl is-active open5gs-amfd
 systemctl status open5gs-amfd --no-pager | head -15
 
-
-============================================================
-LAB 4 - AI QoE (LangGraph + Ollama)
-============================================================
+lab 4
 
 Terminal 1 (check first, then keep running):
 ss -ltnp | rg 11434
@@ -72,10 +55,7 @@ Optional extra proof:
 python qoe_workflow.py -82 35 1.2
 python qoe_workflow.py -112 180 6.0
 
-
-============================================================
-LAB 5 - Ella Core + UERANSIM (Multi-terminal demo)
-============================================================
+lab 5
 
 Terminal 1 (stack up):
 cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
@@ -101,13 +81,3 @@ https://127.0.0.1:5002/
 After demo cleanup:
 docker compose down
 
-
-============================================================
-FAST DEMO SPEAKING LINE (for each lab)
-============================================================
-
-Lab 1: "Containerized transport demo with REST, MQTT, and gRPC validation."
-Lab 2: "Spring Boot APIs validated through Swagger and OpenAPI."
-Lab 3: "5G core services verified with Open5GS/Free5GC workflow."
-Lab 4: "AI workflow maps KPIs to QoE label and optimization advice."
-Lab 5: "Live multi-terminal 5G simulation with Ella Core and UERANSIM."
