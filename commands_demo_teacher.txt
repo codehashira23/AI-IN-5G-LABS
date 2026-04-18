@@ -57,8 +57,11 @@ systemctl status open5gs-amfd --no-pager | head -15
 LAB 4 - AI QoE (LangGraph + Ollama)
 ============================================================
 
-Terminal 1 (keep running):
+Terminal 1 (check first, then keep running):
+ss -ltnp | rg 11434
+# If nothing is shown above, run:
 ollama serve
+# If "address already in use" appears, Ollama is already running (this is OK).
 
 Terminal 2:
 cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab4-ai-qoe"
