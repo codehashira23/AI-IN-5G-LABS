@@ -1,0 +1,110 @@
+AI in 5G Labs - Teacher Demo Commands (Run One by One)
+
+Important:
+- Run labs in order: Lab1 -> Lab2 -> Lab3 -> Lab4 -> Lab5
+- Complete one lab, show output, then move to next
+- For Lab 5, use multiple terminals
+
+============================================================
+LAB 1 - Docker Transport (REST + MQTT + gRPC)
+============================================================
+
+Terminal 1:
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab1-docker-transport"
+chmod +x run.sh
+./run.sh
+
+Proof commands (same terminal after run):
+docker compose ps
+curl -s http://127.0.0.1:8080/health
+
+Stop Lab 1 before next lab:
+docker compose down
+
+
+============================================================
+LAB 2 - Spring Boot + Swagger
+============================================================
+
+Terminal 1:
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab2-spring-swagger"
+chmod +x run.sh
+./run.sh
+
+Proof commands:
+curl -I http://127.0.0.1:8081/swagger-ui/index.html
+curl -s http://127.0.0.1:8081/v3/api-docs
+
+Note:
+- If app is still running after demo, stop with Ctrl+C (or kill shown PID)
+
+
+============================================================
+LAB 3 - 5G Core (Open5GS + Free5GC)
+============================================================
+
+Terminal 1:
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab3-5g-core"
+chmod +x run.sh
+./run.sh
+
+Proof commands:
+systemctl is-active open5gs-amfd
+systemctl status open5gs-amfd --no-pager | head -15
+
+
+============================================================
+LAB 4 - AI QoE (LangGraph + Ollama)
+============================================================
+
+Terminal 1 (keep running):
+ollama serve
+
+Terminal 2:
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab4-ai-qoe"
+chmod +x run.sh
+./run.sh
+
+Optional extra proof:
+python qoe_workflow.py -82 35 1.2
+python qoe_workflow.py -112 180 6.0
+
+
+============================================================
+LAB 5 - Ella Core + UERANSIM (Multi-terminal demo)
+============================================================
+
+Terminal 1 (stack up):
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
+chmod +x run.sh
+./run.sh
+
+Terminal 2 (gNB):
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
+docker compose exec -ti ueransim bin/nr-gnb --config /gnb.yaml
+
+Terminal 3 (UE):
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
+docker compose exec -ti ueransim bin/nr-ue --config /ue.yaml
+
+Terminal 4 (data-plane proof):
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
+docker compose exec -ti ueransim ping -I uesimtun0 8.8.8.8 -c4
+docker compose ps
+
+UI proof in browser:
+https://127.0.0.1:5002/
+
+After demo cleanup:
+docker compose down
+
+
+============================================================
+FAST DEMO SPEAKING LINE (for each lab)
+============================================================
+
+Lab 1: "Containerized transport demo with REST, MQTT, and gRPC validation."
+Lab 2: "Spring Boot APIs validated through Swagger and OpenAPI."
+Lab 3: "5G core services verified with Open5GS/Free5GC workflow."
+Lab 4: "AI workflow maps KPIs to QoE label and optimization advice."
+Lab 5: "Live multi-terminal 5G simulation with Ella Core and UERANSIM."
