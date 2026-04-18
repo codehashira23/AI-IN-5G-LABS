@@ -76,7 +76,7 @@ docker compose exec -ti ueransim ping -I uesimtun0 8.8.8.8 -c4
 docker compose ps
 
 UI proof in browser:
-https://127.0.0.1:5002/
+http://127.0.0.1:5002/dashboard
 
 After demo cleanup:
 docker compose down
