@@ -24,10 +24,27 @@ fi
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 echo "[Lab1] STEP 1/6 — docker compose build + up"
-docker compose up -d --build
+# Retry: Docker Hub CDN occasionally resets mid-pull (IPv6 / transient network).
+retry_compose_up() {
+  local max="${LAB1_COMPOSE_RETRIES:-8}"
+  local wait="${LAB1_COMPOSE_RETRY_WAIT:-20}"
+  local a
+  for a in $(seq 1 "${max}"); do
+    echo "[Lab1] docker compose up -d --build (attempt ${a}/${max})"
+    if docker compose up -d --build; then
+      return 0
+    fi
+    if [[ "${a}" -lt "${max}" ]]; then
+      echo "[WARN] compose up failed; waiting ${wait}s before retry..."
+      sleep "${wait}"
+    fi
+  done
+  return 1
+}
+retry_compose_up
 
 echo "[Lab1] STEP 2/6 — Proof: compose service status"
-docker compose ps --no-color
+docker compose ps
 
 echo "[Lab1] STEP 3/6 — Wait for REST /health (port 8080)"
 ok=0
@@ -55,11 +72,13 @@ echo ""
 echo "[OK] REST GET/POST returned JSON."
 
 echo "[Lab1] STEP 5/6 — MQTT proof (mosquitto + mqtt-demo logs)"
-docker compose logs --no-color --tail 40 mqtt-demo || {
+# mqtt_demo.py publishes after ~2s and exits after ~4s; give it time before reading logs.
+sleep 6
+docker compose logs --tail 40 mqtt-demo || {
   echo "[FAIL] could not read mqtt-demo logs"
   exit 1
 }
-if ! docker compose logs --no-color mqtt-demo 2>&1 | grep -qiE 'published|received|connected'; then
+if ! docker compose logs mqtt-demo 2>&1 | grep -qiE 'published|received|connected'; then
   echo "[FAIL] MQTT demo log missing expected publish/receive/connect lines."
   exit 1
 fi

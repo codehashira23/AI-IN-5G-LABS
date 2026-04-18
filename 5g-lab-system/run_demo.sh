@@ -14,6 +14,9 @@
 # Optional — skip Free5GC (disk/time); Lab 3 runs Open5GS only:
 #   LAB_DEMO_SKIP_FREE5GC=1 ./run_demo.sh
 #
+# Optional — skip Lab 3 (needs sudo for systemd/Open5GS; use in CI or when sudo has no TTY):
+#   LAB_DEMO_SKIP_LAB3=1 ./run_demo.sh
+#
 set -euo pipefail
 set -o pipefail
 
@@ -61,6 +64,7 @@ run_step() {
   echo "Host: $(hostname)"
   echo "CWD: ${ROOT}"
   echo "LAB_DEMO_SKIP_FREE5GC=${LAB_DEMO_SKIP_FREE5GC:-0}"
+  echo "LAB_DEMO_SKIP_LAB3=${LAB_DEMO_SKIP_LAB3:-0}"
 } | tee "${DEMO_LOG}"
 
 run_step "STEP 1/5 — Lab 1 (Transport: Docker + REST + MQTT + gRPC)" \
@@ -75,7 +79,13 @@ if [[ "${LAB_DEMO_SKIP_FREE5GC:-0}" == "1" ]]; then
   echo "[INFO] LAB_DEMO_SKIP_FREE5GC=1 — Lab 3 runs Open5GS only (Free5GC skipped)." | tee -a "${DEMO_LOG}"
 fi
 
-if [[ "${EUID}" -eq 0 ]]; then
+if [[ "${LAB_DEMO_SKIP_LAB3:-0}" == "1" ]]; then
+  banner "STEP 3/5 — Lab 3 SKIPPED (LAB_DEMO_SKIP_LAB3=1)"
+  {
+    echo "Run Lab 3 manually in a terminal with sudo when needed:"
+    echo "  cd ${ROOT}/lab3-5g-core && sudo ./run.sh ${LAB3_MODE}"
+  } | tee -a "${DEMO_LOG}"
+elif [[ "${EUID}" -eq 0 ]]; then
   run_step "STEP 3/5 — Lab 3 (Core: Open5GS + Free5GC as selected)" \
     bash "${ROOT}/lab3-5g-core/run.sh" "${LAB3_MODE}"
 else

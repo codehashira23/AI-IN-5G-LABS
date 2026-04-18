@@ -1,0 +1,93 @@
+lab 1  :
+
+ cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab2-spring-swagger"
+chmod +x run.sh
+./run.sh
+
+lab 2 : 
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab2-spring-swagger"
+chmod +x run.sh
+./run.sh
+
+lab 3 : 
+
+# 1) Go to lab/project folder
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS"
+
+# 2) Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3) Install Python dependencies
+pip install -U pip
+pip install -r requirements.txt
+
+# 4) Install Ollama (if not already installed)
+curl -fsSL https://ollama.com/install.sh | sh
+
+# 5) Start Ollama server (keep this terminal running)
+ollama serve
+
+
+
+new terminal : 
+
+# 6) Pull required model
+ollama pull llama3.1:8b
+
+# 7) Verify model is present
+ollama list
+
+# 8) Run the lab workflow (use your actual entry file)
+python main.py
+
+
+all in one link : 
+
+
+# Lab 5 Commands (Ella Core + UERANSIM)
+
+./run.sh
+
+ https://127.0.0.1:5002/
+
+docker compose exec -ti ueransim bin/nr-gnb --config /gnb.yaml
+
+docker compose exec -ti ueransim bin/nr-ue --config /ue.yaml
+
+docker compose exec -ti ueransim ping -I uesimtun0 8.8.8.8 -c4
+
+docker compose ps
+
+docker compose down
+
+
+
+
+lab 4 : 
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system"
+
+cd lab1-docker-transport && docker compose down && cd ..
+cd lab5-ellacore-ueransim && docker compose down && cd ..
+
+docker system prune -a --volumes
+
+
+rm -rf ~/.ollama/models/blobs/*partial
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab4-ai-qoe"
+bash run.sh
+
+
+
+lab 5: 
+
+cd "/home/codehasira23/AI IN %G/AI-IN-5G-LABS/5g-lab-system/lab5-ellacore-ueransim"
+bash run.sh
+
+terminal 1 and 2 : 
+docker compose exec -ti ueransim bin/nr-gnb --config /gnb.yaml
+docker compose exec -ti ueransim bin/nr-ue --config /ue.yaml
+
+then ui - url 

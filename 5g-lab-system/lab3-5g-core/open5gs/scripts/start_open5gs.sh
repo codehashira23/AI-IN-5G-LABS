@@ -4,7 +4,7 @@ echo "[open5gs] Starting core network services (systemd)..."
 
 start_if_present() {
   local u="$1"
-  if systemctl list-unit-files | grep -q "^${u}.service"; then
+  if sudo systemctl list-unit-files --type=service --no-legend | awk '{print $1}' | grep -qx "${u}.service"; then
     echo "[open5gs] starting ${u}..."
     sudo systemctl start "${u}"
   else

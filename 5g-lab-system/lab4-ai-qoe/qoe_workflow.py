@@ -134,11 +134,12 @@ def build_graph():
     g = StateGraph(QoEState)
     g.add_node("kpi_validation", node_kpi_validation)
     g.add_node("qoe_classification", node_qoe_classification)
-    g.add_node("advice", node_advice)
+    # Node id must not collide with a state key name.
+    g.add_node("advice_node", node_advice)
     g.set_entry_point("kpi_validation")
     g.add_edge("kpi_validation", "qoe_classification")
-    g.add_edge("qoe_classification", "advice")
-    g.add_edge("advice", END)
+    g.add_edge("qoe_classification", "advice_node")
+    g.add_edge("advice_node", END)
     return g.compile()
 
 

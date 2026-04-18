@@ -1,4 +1,5 @@
 langchain==0.2.16
-langchain-core==0.2.38
+# langgraph 0.2.28 requires langchain-core>=0.2.39
+langchain-core>=0.2.39,<0.3.0
 langchain-community==0.2.16
 langgraph==0.2.28

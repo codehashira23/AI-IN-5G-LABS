@@ -11,7 +11,7 @@ fi
 
 require_unit() {
   local u="$1"
-  if ! systemctl list-unit-files | grep -q "^${u}.service"; then
+  if ! sudo systemctl list-unit-files --type=service --no-legend | awk '{print $1}' | grep -qx "${u}.service"; then
     echo "[ERROR] systemd unit missing: ${u}.service (install Open5GS packages)."
     exit 1
   fi
@@ -35,7 +35,7 @@ echo ""
 echo "--- AMF last log lines ---"
 sudo journalctl -u open5gs-amfd -n 40 --no-pager
 
-if systemctl list-unit-files | grep -q '^open5gs-nrfd.service'; then
+if sudo systemctl list-unit-files --type=service --no-legend | awk '{print $1}' | grep -qx 'open5gs-nrfd.service'; then
   echo ""
   require_active open5gs-nrfd
   echo ""
@@ -50,7 +50,7 @@ echo ""
 echo "[PROOF] AMF log keyword sample (NGAP/NAS style strings; varies by traffic):"
 sudo journalctl -u open5gs-amfd -n 120 --no-pager | grep -iE 'guti|nas|ngap|register|amf' | tail -n 6 || echo "  (no keyword hits in last 120 lines — show longer journal in viva if needed)"
 
-if systemctl list-unit-files | grep -q '^open5gs-nrfd.service' && [[ "$(systemctl is-active open5gs-nrfd 2>/dev/null)" == "active" ]]; then
+if sudo systemctl list-unit-files --type=service --no-legend | awk '{print $1}' | grep -qx 'open5gs-nrfd.service' && [[ "$(systemctl is-active open5gs-nrfd 2>/dev/null)" == "active" ]]; then
   echo ""
   echo "[PROOF] NRF log keyword sample (NF discovery / registration style strings):"
   sudo journalctl -u open5gs-nrfd -n 200 --no-pager | grep -iE 'nf|profile|register|subscription|heartbeat|discovery' | tail -n 8 || echo "  (no keyword hits — inspect full NRF journal during viva)"

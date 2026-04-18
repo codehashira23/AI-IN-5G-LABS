@@ -27,9 +27,9 @@ echo "[Lab5] STEP 1/3 — docker compose up (Ella Core + UERANSIM image)"
 docker compose up -d
 
 echo "[Lab5] STEP 2/3 — Proof: docker compose ps (expect Up / running)"
-docker compose ps --no-color
+docker compose ps
 
-PS_OUT="$(docker compose ps --no-color 2>&1)"
+PS_OUT="$(docker compose ps 2>&1)"
 if ! echo "${PS_OUT}" | grep -qiE '[[:space:]]up[[:space:]]|[[:space:]]running[[:space:]]'; then
   echo "[FAIL] Compose did not report services in Up state."
   exit 1
