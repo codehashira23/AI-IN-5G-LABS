@@ -1,0 +1,68 @@
+
+“Ab main Lab 1 demonstrate kar raha hoon: Docker-based transport protocols demo.”
+“Is lab me hum REST, MQTT, aur gRPC services ko containerized environment me run karte hain.”
+“Sabse pehle maine docker compose se required services build aur start ki.”
+“Phir maine REST health endpoint aur API calls se HTTP communication verify ki.”
+“MQTT ke liye publish/subscribe evidence logs me check kiya.”
+“gRPC client call run karke service-to-service RPC response confirm kiya.”
+“Container status docker compose ps se validate kiya ki sab services up hain.”
+“Is lab ka key learning hai multi-protocol communication in one reproducible setup.”
+“Docker use karne se environment consistent rehta hai aur demo repeatable hota hai.”
+“So Lab 1 successfully proves REST + MQTT + gRPC interoperability.”
+Closing line (short):
+“Lab 1 successful hai: containers up hain, REST/MQTT/gRPC tino protocols properly validate ho gaye.”
+
+
+
+“Ab main Lab 2 demonstrate kar raha hoon: Spring Boot + Swagger API validation.”
+“Is lab ka objective hai backend service run karna aur APIs ko documented way me test karna.”
+“Sabse pehle maine Maven se project build kiya aur jar/application start ki.”
+“Uske baad maine Swagger UI open karke available endpoints verify kiye.”
+“Main POST request se sample slice/resource create karta hoon.”
+“Phir GET request se same data fetch karke response consistency check karta hoon.”
+“OpenAPI docs endpoint (/v3/api-docs) se API contract bhi verify hota hai.”
+“Isse confirm hota hai ki backend logic + documentation dono sahi work kar rahe hain.”
+“Lab 2 practical me API development, testing, aur visibility ek saath cover hoti hai.”
+“So this lab proves a complete API lifecycle: build, run, document, and validate.”
+Closing line (short):
+“Lab 2 successful hai: Spring app run hua, Swagger load hua, aur API requests expected response de rahi hain.”
+
+
+“Ab main Lab 3 demonstrate kar raha hoon, jisme 5G core workflow verify karte hain.”
+“Is lab me hum Open5GS/Free5GC style core components ko run aur validate karte hain.”
+“Main lab script run karta hoon jo required core services start aur check karti hai.”
+“Isme control-plane readiness verify hoti hai, especially AMF-related status checks.”
+“Logs aur service status se confirm hota hai ki core processes expected state me hain.”
+“Agar free5GC path run karein, to docker compose state se NF containers verify hote hain.”
+“Yahaan focus attach/session signaling path ke backend core readiness par hota hai.”
+“Main proof ke liye service status aur generated logs show karta hoon.”
+“Isse demonstrate hota hai ki 5G core environment reproducibly run ho raha hai.”
+“So Lab 3 me humne core orchestration, verification, aur stability evidence successfully show kiya.”
+Closing line (short):
+“Lab 3 successful hai: core services up hain, verification checks pass hain, aur logs expected flow show kar rahe hain.”
+
+
+“Ab main Lab 4 demonstrate kar raha hoon: AI-based QoE analysis using LangGraph + Ollama.”
+“Is lab ka goal hai network KPIs ko input dena aur AI se QoE label + advice generate karna.”
+“Sabse pehle maine Python environment aur required dependencies setup ki.”
+“Phir maine Ollama model llama3.1:8b ensure/pull kiya for local inference.”
+“Ab workflow run hota hai jisme pehla step KPI sanity check karta hai.”
+“Dusra step QoE classify karta hai, jaise good/fair/poor user experience.”
+“Teesra step optimization advice deta hai based on KPI condition.”
+“Output me key fields aati hain: kpi_ok, qoe_label, aur advice.”
+“Main normal aur stress KPI values run karke behavior difference bhi show kar sakta hoon.”
+“Is tarah Lab 4 prove karta hai ki AI workflow network KPIs ko practical QoE insights me convert kar sakta hai.”
+
+
+“Ab main Lab 5 run kar raha hoon: Ella Core + UERANSIM, jisme hum 5G attach aur session simulation dikhate hain.”
+“Sabse pehle maine Docker se core stack start kiya, aur docker compose ps se verify kiya ki containers running hain.”
+“Phir maine Ella Core dashboard open kiya on port 5002, taaki core-side events monitor kar saken.”
+“Ab main gNB process start karta hoon, jo radio/base-station side ko simulate karta hai.”
+“Iske baad main UE process start karta hoon, jo user device registration flow simulate karta hai.”
+“Terminal logs me NGAP/NAS signaling visible hai, jo core aur UE communication confirm karta hai.”
+“Subscriber values aur UE config match hone ki wajah se authentication/registration successful hua.”
+“Ab main data-plane validate karne ke liye UE tunnel interface se ping run kar raha hoon.”
+“Ping replies aa rahi hain, iska matlab end-to-end connectivity successful hai.”
+“So Lab 5 successfully show karta hai ki simulated 5G core + RAN setup me attach aur connectivity dono work kar rahe hain.”
+
+
